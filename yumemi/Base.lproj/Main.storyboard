@@ -20,6 +20,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYD-gN-YMa">
                                 <rect key="frame" x="214" y="660.66666666666663" width="107" height="30"/>
                                 <state key="normal" title="Reload"/>
+                                <connections>
+                                    <action selector="tapReload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2pX-6r-kGu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRB-Rn-Krl">
                                 <rect key="frame" x="107" y="660.66666666666663" width="107" height="30"/>
@@ -47,7 +50,6 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="8kp-FN-sys" firstAttribute="top" secondItem="Z2f-3G-KCB" secondAttribute="bottom" id="7vR-Xo-Emn"/>
                                     <constraint firstItem="KpS-rm-0UK" firstAttribute="height" secondItem="Z2f-3G-KCB" secondAttribute="height" multiplier="0.1" id="9lZ-Gs-hhP"/>
@@ -79,6 +81,9 @@
                             <constraint firstItem="IRB-Rn-Krl" firstAttribute="top" secondItem="i9D-Ty-CHK" secondAttribute="bottom" constant="80" id="ziV-BT-Gm7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherImageView" destination="Z2f-3G-KCB" id="wPV-jm-3ND"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
