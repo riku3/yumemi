@@ -45,15 +45,14 @@ class ViewController: UIViewController {
         do {
             weather = try yumemiAPI.fetchWeather(at: "tokyo")
         } catch YumemiWeatherError.invalidParameterError {
-            // TODO: YumemiWeatherError型に応じてアラートを表示
+            displayAlert(errorName: "invalidParameterError")
         } catch YumemiWeatherError.jsonDecodeError {
-            // TODO: YumemiWeatherError型に応じてアラートを表示
+            displayAlert(errorName: "jsonDecodeError")
         } catch YumemiWeatherError.unknownError {
-            // TODO: YumemiWeatherError型に応じてアラートを表示
+            displayAlert(errorName: "unknownError")
         } catch {
             print("想定外のエラー")
         }
-        
         
         switch weather {
         case "sunny":
@@ -67,6 +66,12 @@ class ViewController: UIViewController {
         }
         
         loadingAPI = false
+    }
+    
+    private func displayAlert(errorName: String) {
+        let alert = UIAlertController(title: "エラーが発生しました", message: errorName, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 
