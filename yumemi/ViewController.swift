@@ -39,7 +39,15 @@ class ViewController: UIViewController {
         }
         
         loadingAPI = true
-        let weather = yumemiAPI.fetchWeather()
+        // Simple ver: session2
+//        let weather = yumemiAPI.fetchWeather()
+        var weather = ""
+        do {
+            weather = try yumemiAPI.fetchWeather(at: "tokyo")
+        } catch let error {
+            // TODO: YumemiWeatherError型に応じてアラートを表示
+        }
+        
         
         switch weather {
         case "sunny":
