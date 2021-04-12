@@ -44,8 +44,14 @@ class ViewController: UIViewController {
         var weather = ""
         do {
             weather = try yumemiAPI.fetchWeather(at: "tokyo")
-        } catch let error {
+        } catch YumemiWeatherError.invalidParameterError {
             // TODO: YumemiWeatherError型に応じてアラートを表示
+        } catch YumemiWeatherError.jsonDecodeError {
+            // TODO: YumemiWeatherError型に応じてアラートを表示
+        } catch YumemiWeatherError.unknownError {
+            // TODO: YumemiWeatherError型に応じてアラートを表示
+        } catch {
+            print("想定外のエラー")
         }
         
         
