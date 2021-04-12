@@ -31,15 +31,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9D-Ty-CHK">
                                 <rect key="frame" x="107" y="345.33333333333331" width="214" height="235.33333333333331"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="leftLabel" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kp-FN-sys">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kp-FN-sys">
                                         <rect key="frame" x="0.0" y="214.00000000000006" width="107" height="21.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" name="Blue"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rightLabel" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpS-rm-0UK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KpS-rm-0UK">
                                         <rect key="frame" x="107" y="214.00000000000006" width="107" height="21.333333333333343"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" name="Red"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -82,6 +82,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="maxTempLabel" destination="KpS-rm-0UK" id="X4K-nP-dgf"/>
+                        <outlet property="minTempLabel" destination="8kp-FN-sys" id="1wb-7P-FUt"/>
                         <outlet property="weatherImageView" destination="Z2f-3G-KCB" id="wPV-jm-3ND"/>
                     </connections>
                 </viewController>

@@ -15,8 +15,22 @@ class ViewController: UIViewController {
 //        case cloudy = "cloudy"
 //        case rainy = "rainy"
 //    }
+    
+    struct Request:Codable {
+        let area:String
+        let date:String
+    }
+    
+    struct Response:Codable {
+        let weather:String
+        let maxTemp:Int
+        let minTemp:Int
+        let date:String
+    }
 
     @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
     
     var yumemiAPI = YumemiWeather.self
     var loadingAPI = false
@@ -37,13 +51,29 @@ class ViewController: UIViewController {
         guard !loadingAPI else {
             return
         }
-        
         loadingAPI = true
+        
         // Simple ver: session2
 //        let weather = yumemiAPI.fetchWeather()
-        var weather = ""
+        
+        // Request
+        let request = Request(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
+        var requestJson = ""
+        var response:Response?
+        var responseJson = ""
+        let encoder = JSONEncoder()
         do {
-            weather = try yumemiAPI.fetchWeather(at: "tokyo")
+            let data = try encoder.encode(request)
+            requestJson = String(data: data, encoding: .utf8)!
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        // APIよりデータ取得
+        do {
+            // Throws ver: session3
+//            weather = try yumemiAPI.fetchWeather(at: "tokyo")"
+            responseJson = try yumemiAPI.fetchWeather(requestJson)
         } catch YumemiWeatherError.invalidParameterError {
             displayAlert(errorName: "invalidParameterError")
         } catch YumemiWeatherError.jsonDecodeError {
@@ -54,7 +84,21 @@ class ViewController: UIViewController {
             print("想定外のエラー")
         }
         
-        switch weather {
+        guard responseJson != "" else {
+            loadingAPI = false
+            return
+        }
+        
+        // Response
+        let decoder: JSONDecoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        do {
+            response = try decoder.decode(Response.self, from: responseJson.data(using: .utf8)!)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        switch response?.weather {
         case "sunny":
             weatherImageView.image = UIImage(named: "sunny");
         case "cloudy":
@@ -64,6 +108,9 @@ class ViewController: UIViewController {
         default:
             break
         }
+            
+        minTempLabel.text = response?.minTemp.description
+        maxTempLabel.text = response?.maxTemp.description
         
         loadingAPI = false
     }
