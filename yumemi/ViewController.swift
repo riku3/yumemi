@@ -37,9 +37,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // ランダムな天気画像を表示する
-        setWeatherImage()
     }
     
     @IBAction func tapReload(_ sender: UIButton) {
