@@ -37,6 +37,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setWeatherImage), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     @IBAction func tapClose(_ sender: UIButton) {
@@ -48,7 +50,7 @@ class ViewController: UIViewController {
         setWeatherImage()
     }
     
-    private func setWeatherImage() {
+    @objc private func setWeatherImage() {
         guard !loadingAPI else {
             return
         }
