@@ -39,6 +39,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func tapClose(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func tapReload(_ sender: UIButton) {
         // ランダムな天気画像を表示する
         setWeatherImage()
