@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="yumemi" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="yumemi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Super View">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,6 +27,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRB-Rn-Krl">
                                 <rect key="frame" x="107" y="660.66666666666663" width="107" height="30"/>
                                 <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="tapClose:" destination="BYZ-38-t0r" eventType="touchUpInside" id="79H-gF-Tdy"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9D-Ty-CHK">
                                 <rect key="frame" x="107" y="345.33333333333331" width="214" height="235.33333333333331"/>
@@ -67,7 +70,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="jlq-YI-BX9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dYD-gN-YMa" firstAttribute="top" secondItem="i9D-Ty-CHK" secondAttribute="bottom" constant="80" id="2He-an-IIt"/>
@@ -77,7 +80,7 @@
                             <constraint firstItem="Z2f-3G-KCB" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="JzN-Mj-RCj"/>
                             <constraint firstItem="IRB-Rn-Krl" firstAttribute="leading" secondItem="i9D-Ty-CHK" secondAttribute="leading" id="bt1-kT-f9H"/>
                             <constraint firstItem="i9D-Ty-CHK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="fHA-eO-TYE"/>
-                            <constraint firstItem="i9D-Ty-CHK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rLh-Mk-fiT"/>
+                            <constraint firstItem="i9D-Ty-CHK" firstAttribute="centerX" secondItem="jlq-YI-BX9" secondAttribute="centerX" id="rLh-Mk-fiT"/>
                             <constraint firstItem="IRB-Rn-Krl" firstAttribute="top" secondItem="i9D-Ty-CHK" secondAttribute="bottom" constant="80" id="ziV-BT-Gm7"/>
                         </constraints>
                     </view>
