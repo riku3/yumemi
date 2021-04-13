@@ -12,10 +12,11 @@
 		32CA4F1F2616800B009A7E02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F1E2616800B009A7E02 /* ViewController.swift */; };
 		32CA4F222616800B009A7E02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA4F202616800B009A7E02 /* Main.storyboard */; };
 		32CA4F242616800F009A7E02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32CA4F232616800F009A7E02 /* Assets.xcassets */; };
-		32CA4F272616800F009A7E02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA4F252616800F009A7E02 /* LaunchScreen.storyboard */; };
 		32CA4F322616800F009A7E02 /* yumemiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F312616800F009A7E02 /* yumemiTests.swift */; };
 		32CA4F3D2616800F009A7E02 /* yumemiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F3C2616800F009A7E02 /* yumemiUITests.swift */; };
 		32CA4F4F2616827C009A7E02 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 32CA4F4E2616827C009A7E02 /* YumemiWeather */; };
+		32CA4F5D26254993009A7E02 /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F5C26254992009A7E02 /* PresentViewController.swift */; };
+		32CA4F78262555B0009A7E02 /* Present.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA4F7A262555B0009A7E02 /* Present.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +43,6 @@
 		32CA4F1E2616800B009A7E02 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		32CA4F212616800B009A7E02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32CA4F232616800F009A7E02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		32CA4F262616800F009A7E02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32CA4F282616800F009A7E02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32CA4F2D2616800F009A7E02 /* yumemiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yumemiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CA4F312616800F009A7E02 /* yumemiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yumemiTests.swift; sourceTree = "<group>"; };
@@ -50,6 +50,8 @@
 		32CA4F382616800F009A7E02 /* yumemiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yumemiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CA4F3C2616800F009A7E02 /* yumemiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yumemiUITests.swift; sourceTree = "<group>"; };
 		32CA4F3E2616800F009A7E02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32CA4F5C26254992009A7E02 /* PresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentViewController.swift; sourceTree = "<group>"; };
+		32CA4F79262555B0009A7E02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Present.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +108,9 @@
 				32CA4F1E2616800B009A7E02 /* ViewController.swift */,
 				32CA4F202616800B009A7E02 /* Main.storyboard */,
 				32CA4F232616800F009A7E02 /* Assets.xcassets */,
-				32CA4F252616800F009A7E02 /* LaunchScreen.storyboard */,
 				32CA4F282616800F009A7E02 /* Info.plist */,
+				32CA4F5C26254992009A7E02 /* PresentViewController.swift */,
+				32CA4F7A262555B0009A7E02 /* Present.storyboard */,
 			);
 			path = yumemi;
 			sourceTree = "<group>";
@@ -239,8 +242,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32CA4F272616800F009A7E02 /* LaunchScreen.storyboard in Resources */,
 				32CA4F242616800F009A7E02 /* Assets.xcassets in Resources */,
+				32CA4F78262555B0009A7E02 /* Present.storyboard in Resources */,
 				32CA4F222616800B009A7E02 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +271,7 @@
 			files = (
 				32CA4F1F2616800B009A7E02 /* ViewController.swift in Sources */,
 				32CA4F1B2616800B009A7E02 /* AppDelegate.swift in Sources */,
+				32CA4F5D26254993009A7E02 /* PresentViewController.swift in Sources */,
 				32CA4F1D2616800B009A7E02 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,13 +316,14 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		32CA4F252616800F009A7E02 /* LaunchScreen.storyboard */ = {
+		32CA4F7A262555B0009A7E02 /* Present.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				32CA4F262616800F009A7E02 /* Base */,
+				32CA4F79262555B0009A7E02 /* Base */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Present.storyboard;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 /* End PBXVariantGroup section */
 
@@ -442,7 +447,6 @@
 		32CA4F422616800F009A7E02 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = yumemi/Info.plist;
@@ -453,14 +457,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = riku3.yumemi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		32CA4F432616800F009A7E02 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = yumemi/Info.plist;
@@ -471,7 +474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = riku3.yumemi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
