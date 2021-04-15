@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import YumemiWeather
 
 protocol WeatherModel {
     func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void)
@@ -32,18 +31,10 @@ struct Response:Codable {
 
 class ViewController: UIViewController {
     
-//    enum Weather: String {
-//        case sunny = "sunny"
-//        case cloudy = "cloudy"
-//        case rainy = "rainy"
-//    }
-    
+    var weatherModel: WeatherModel!
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
-    
-    var yumemiAPI = YumemiWeather.self
-//    var loadingAPI = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,71 +52,40 @@ class ViewController: UIViewController {
     }
     
     @objc private func setWeatherImage() {
-        guard !loadingAPI else {
-            return
+        weatherModel.fetchWeather(area: "tokyo", date: "2020-04-01T12:00:00+09:00") { result in
+            DispatchQueue.main.async {
+                self.handleWeather(result: result)
+            }
         }
-        loadingAPI = true
-        
-        // Simple ver: session2
-//        let weather = yumemiAPI.fetchWeather()
-        
-        // Request
-        let request = Request(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
-        var requestJson = ""
-        var response:Response?
-        var responseJson = ""
-        let encoder = JSONEncoder()
-        do {
-            let data = try encoder.encode(request)
-            requestJson = String(data: data, encoding: .utf8)!
-        } catch {
-            print(error.localizedDescription)
+    }
+    
+    func handleWeather(result: Result<Response, WeatherError>) {
+        switch result {
+        case .success(let response):
+            switch response.weather {
+            case "sunny":
+                weatherImageView.image = UIImage(named: "sunny");
+            case "cloudy":
+                weatherImageView.image = UIImage(named: "cloudy");
+            case "rainy":
+                weatherImageView.image = UIImage(named: "rainy");
+            default:
+                break
+            }
+            minTempLabel.text = response.minTemp.description
+            maxTempLabel.text = response.maxTemp.description
+        case .failure(let error):
+            let message: String
+            switch error {
+            case .jsonEncodeError:
+                message = "jsonEncodeError"
+            case .jsonDecodeError:
+                message = "jsonDecodeError"
+            case .unknownError:
+                message = "unknownError"
+            }
+            displayAlert(errorName: message)
         }
-        
-        // APIよりデータ取得
-        do {
-            // Throws ver: session3
-//            weather = try yumemiAPI.fetchWeather(at: "tokyo")"
-            responseJson = try yumemiAPI.fetchWeather(requestJson)
-        } catch YumemiWeatherError.invalidParameterError {
-            displayAlert(errorName: "invalidParameterError")
-        } catch YumemiWeatherError.jsonDecodeError {
-            displayAlert(errorName: "jsonDecodeError")
-        } catch YumemiWeatherError.unknownError {
-            displayAlert(errorName: "unknownError")
-        } catch {
-            print("想定外のエラー")
-        }
-        
-        guard responseJson != "" else {
-            loadingAPI = false
-            return
-        }
-        
-        // Response
-        let decoder: JSONDecoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        do {
-            response = try decoder.decode(Response.self, from: responseJson.data(using: .utf8)!)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        switch response?.weather {
-        case "sunny":
-            weatherImageView.image = UIImage(named: "sunny");
-        case "cloudy":
-            weatherImageView.image = UIImage(named: "cloudy");
-        case "rainy":
-            weatherImageView.image = UIImage(named: "rainy");
-        default:
-            break
-        }
-            
-        minTempLabel.text = response?.minTemp.description
-        maxTempLabel.text = response?.maxTemp.description
-        
-        loadingAPI = false
     }
     
     private func displayAlert(errorName: String) {

@@ -9,17 +9,9 @@ import Foundation
 import YumemiWeather
 
 class WeatherModelImpl: WeatherModel {
-    
-    var loadingAPI = false
-    
-    func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void) {
-        guard !loadingAPI else {
-            return
-        }
-        loadingAPI = true
         
+    func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void) {
         // Request
-//        let request = Request(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         let request = Request(area: area, date: date)
         var requestJson = ""
         var responseJson = ""
@@ -51,7 +43,6 @@ class WeatherModelImpl: WeatherModel {
         }
         
         guard responseJson != "" else {
-            loadingAPI = false
             return
         }
         
@@ -67,6 +58,5 @@ class WeatherModelImpl: WeatherModel {
             print(error.localizedDescription)
             return
         }
-        loadingAPI = false
     }
 }
