@@ -8,6 +8,28 @@
 import UIKit
 import YumemiWeather
 
+protocol WeatherModel {
+    func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void)
+}
+
+enum WeatherError: Error {
+    case jsonEncodeError
+    case jsonDecodeError
+    case unknownError
+}
+
+struct Request:Codable {
+    let area:String
+    let date:String
+}
+
+struct Response:Codable {
+    let weather:String
+    let maxTemp:Int
+    let minTemp:Int
+    let date:String
+}
+
 class ViewController: UIViewController {
     
 //    enum Weather: String {
@@ -16,24 +38,12 @@ class ViewController: UIViewController {
 //        case rainy = "rainy"
 //    }
     
-    struct Request:Codable {
-        let area:String
-        let date:String
-    }
-    
-    struct Response:Codable {
-        let weather:String
-        let maxTemp:Int
-        let minTemp:Int
-        let date:String
-    }
-
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     
     var yumemiAPI = YumemiWeather.self
-    var loadingAPI = false
+//    var loadingAPI = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
