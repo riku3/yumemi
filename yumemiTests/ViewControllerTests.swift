@@ -6,13 +6,19 @@
 //
 
 import XCTest
-import YumemiWeather
 @testable import yumemi
 
 class ViewControllerTests: XCTestCase {
 
+    var viewController: ViewController!
+    var weatherModel: WeatherModelMock!
+
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // FIXME: cast error
+        weatherModel = WeatherModelMock()
+        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ViewController
+        viewController.weatherModel = weatherModel
+        _ = viewController.view
     }
 
     override func tearDownWithError() throws {
@@ -31,4 +37,34 @@ class ViewControllerTests: XCTestCase {
         }
     }
 
+}
+
+class WeatherModelMock: WeatherModel {
+
+    enum TestCategory {
+        case sunny
+        case cloudy
+        case rainy
+    }
+
+    var request: TestCategory!
+
+    func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void) {
+        switch request {
+        case .sunny:
+            completion(.success(
+                Response(weather: "sunny", maxTemp: 10, minTemp: 0, date: ""))
+            )
+        case .cloudy:
+            completion(.success(
+                Response(weather: "cloudy", maxTemp: 10, minTemp: 0, date: ""))
+            )
+        case .rainy:
+            completion(.success(
+                Response(weather: "rainy", maxTemp: 10, minTemp: 0, date: ""))
+            )
+        case .none:
+            break
+        }
+    }
 }
