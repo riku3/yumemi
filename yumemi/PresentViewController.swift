@@ -17,6 +17,7 @@ class PresentViewController: UIViewController {
         // FIXME: Safe Are?の幅が大きい
         let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ViewController
         nextVC.weatherModel = WeatherModelImpl()
+        nextVC.weatherDelegate = WeatherModelDelegate()
         nextVC.modalPresentationStyle = .fullScreen
         self.present(nextVC, animated: true, completion: nil)
     }
