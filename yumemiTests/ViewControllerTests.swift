@@ -14,9 +14,8 @@ class ViewControllerTests: XCTestCase {
     var weatherModel: WeatherModelMock!
 
     override func setUpWithError() throws {
-        // FIXME: cast error
         weatherModel = WeatherModelMock()
-        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! ViewController
+        viewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         viewController.weatherModel = weatherModel
         _ = viewController.view
     }

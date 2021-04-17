@@ -18,7 +18,6 @@
 		32CA4F5D26254993009A7E02 /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F5C26254992009A7E02 /* PresentViewController.swift */; };
 		32CA4F78262555B0009A7E02 /* Present.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA4F7A262555B0009A7E02 /* Present.storyboard */; };
 		32CA4F9126281A1A009A7E02 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F9026281A1A009A7E02 /* WeatherModel.swift */; };
-		32CA4FB226295D72009A7E02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F1E2616800B009A7E02 /* ViewController.swift */; };
 		32CA4FB726295DA7009A7E02 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4FB626295DA7009A7E02 /* ViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -289,7 +288,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				32CA4FB726295DA7009A7E02 /* ViewControllerTests.swift in Sources */,
-				32CA4FB226295D72009A7E02 /* ViewController.swift in Sources */,
 				32CA4F322616800F009A7E02 /* yumemiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
