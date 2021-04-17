@@ -32,6 +32,7 @@ struct Response:Codable {
 class ViewController: UIViewController {
     
     var weatherModel: WeatherModel!
+    var activityIndicatorView = UIActivityIndicatorView()
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
@@ -40,6 +41,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(setWeatherImage), name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        activityIndicatorView.center = view.center
+        activityIndicatorView.style = UIActivityIndicatorView.Style.large
+        activityIndicatorView.color = .purple
+        activityIndicatorView.hidesWhenStopped = true
+        view.addSubview(activityIndicatorView)
     }
     
     @IBAction func tapClose(_ sender: UIButton) {
@@ -52,8 +59,11 @@ class ViewController: UIViewController {
     }
     
     @objc func setWeatherImage() {
+        // FIXME: タップしてインジケーターが表示されるまでラグがある
+        self.activityIndicatorView.startAnimating()
         weatherModel.fetchWeather(area: "tokyo", date: "2020-04-01T12:00:00+09:00") { result in
             DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
                 self.handleWeather(result: result)
             }
         }
