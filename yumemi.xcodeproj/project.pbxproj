@@ -17,6 +17,8 @@
 		32CA4F4F2616827C009A7E02 /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = 32CA4F4E2616827C009A7E02 /* YumemiWeather */; };
 		32CA4F5D26254993009A7E02 /* PresentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F5C26254992009A7E02 /* PresentViewController.swift */; };
 		32CA4F78262555B0009A7E02 /* Present.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA4F7A262555B0009A7E02 /* Present.storyboard */; };
+		32CA4F9126281A1A009A7E02 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F9026281A1A009A7E02 /* WeatherModel.swift */; };
+		32CA4FB726295DA7009A7E02 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4FB626295DA7009A7E02 /* ViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		32CA4F3E2616800F009A7E02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32CA4F5C26254992009A7E02 /* PresentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentViewController.swift; sourceTree = "<group>"; };
 		32CA4F79262555B0009A7E02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Present.storyboard; sourceTree = "<group>"; };
+		32CA4F9026281A1A009A7E02 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		32CA4FB626295DA7009A7E02 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				32CA4F282616800F009A7E02 /* Info.plist */,
 				32CA4F5C26254992009A7E02 /* PresentViewController.swift */,
 				32CA4F7A262555B0009A7E02 /* Present.storyboard */,
+				32CA4F9026281A1A009A7E02 /* WeatherModel.swift */,
 			);
 			path = yumemi;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			children = (
 				32CA4F312616800F009A7E02 /* yumemiTests.swift */,
 				32CA4F332616800F009A7E02 /* Info.plist */,
+				32CA4FB626295DA7009A7E02 /* ViewControllerTests.swift */,
 			);
 			path = yumemiTests;
 			sourceTree = "<group>";
@@ -273,6 +279,7 @@
 				32CA4F1B2616800B009A7E02 /* AppDelegate.swift in Sources */,
 				32CA4F5D26254993009A7E02 /* PresentViewController.swift in Sources */,
 				32CA4F1D2616800B009A7E02 /* SceneDelegate.swift in Sources */,
+				32CA4F9126281A1A009A7E02 /* WeatherModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32CA4FB726295DA7009A7E02 /* ViewControllerTests.swift in Sources */,
 				32CA4F322616800F009A7E02 /* yumemiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
