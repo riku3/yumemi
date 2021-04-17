@@ -30,6 +30,8 @@ class ViewControllerTests: XCTestCase {
         viewController.setWeatherImage()
         DispatchQueue.main.async {
             XCTAssertEqual(self.viewController.weatherImageView.image, UIImage(named: "sunny"))
+            XCTAssertEqual(self.viewController.minTempLabel.text, "0")
+            XCTAssertEqual(self.viewController.maxTempLabel.text, "10")
         }
     }
     
@@ -39,6 +41,8 @@ class ViewControllerTests: XCTestCase {
         viewController.setWeatherImage()
         DispatchQueue.main.async {
             XCTAssertEqual(self.viewController.weatherImageView.image, UIImage(named: "cloudy"))
+            XCTAssertEqual(self.viewController.minTempLabel.text, "10")
+            XCTAssertEqual(self.viewController.maxTempLabel.text, "20")
         }
     }
     
@@ -48,21 +52,10 @@ class ViewControllerTests: XCTestCase {
         viewController.setWeatherImage()
         DispatchQueue.main.async {
             XCTAssertEqual(self.viewController.weatherImageView.image, UIImage(named: "rainy"))
+            XCTAssertEqual(self.viewController.minTempLabel.text, "20")
+            XCTAssertEqual(self.viewController.maxTempLabel.text, "30")
         }
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
 
 class WeatherModelMock: WeatherModel {
@@ -83,11 +76,11 @@ class WeatherModelMock: WeatherModel {
             )
         case .cloudy:
             completion(.success(
-                Response(weather: "cloudy", maxTemp: 10, minTemp: 0, date: ""))
+                Response(weather: "cloudy", maxTemp: 20, minTemp: 10, date: ""))
             )
         case .rainy:
             completion(.success(
-                Response(weather: "rainy", maxTemp: 10, minTemp: 0, date: ""))
+                Response(weather: "rainy", maxTemp: 30, minTemp: 20, date: ""))
             )
         case .none:
             break
