@@ -55,6 +55,10 @@ class ViewController: UIViewController {
         view.addSubview(activityIndicatorView)
     }
     
+    deinit {
+        print("deinit")
+    }
+    
     @IBAction func tapClose(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
