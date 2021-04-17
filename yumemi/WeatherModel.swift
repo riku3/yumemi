@@ -27,7 +27,7 @@ class WeatherModelImpl: WeatherModel {
         
         // APIよりデータ取得
         do {
-            responseJson = try YumemiWeather.fetchWeather(requestJson)
+            responseJson = try YumemiWeather.syncFetchWeather(requestJson)
         } catch YumemiWeatherError.invalidParameterError {
             completion(.failure(WeatherError.unknownError))
             return
