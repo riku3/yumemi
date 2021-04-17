@@ -23,6 +23,33 @@ class ViewControllerTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func test_天気予報がsunnyの場合にImageViewのImageにsunnyが設定されること() throws {
+        weatherModel.request = .sunny
+        
+        viewController.setWeatherImage()
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.viewController.weatherImageView.image, UIImage(named: "sunny"))
+        }
+    }
+    
+    func test_天気予報がcloudyの場合にImageViewのImageにsunnyが設定されること() throws {
+        weatherModel.request = .cloudy
+        
+        viewController.setWeatherImage()
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.viewController.weatherImageView.image, UIImage(named: "cloudy"))
+        }
+    }
+    
+    func test_天気予報がrainyの場合にImageViewのImageにsunnyが設定されること() throws {
+        weatherModel.request = .rainy
+        
+        viewController.setWeatherImage()
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.viewController.weatherImageView.image, UIImage(named: "rainy"))
+        }
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.

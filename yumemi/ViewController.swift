@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         setWeatherImage()
     }
     
-    @objc private func setWeatherImage() {
+    @objc func setWeatherImage() {
         weatherModel.fetchWeather(area: "tokyo", date: "2020-04-01T12:00:00+09:00") { result in
             DispatchQueue.main.async {
                 self.handleWeather(result: result)
