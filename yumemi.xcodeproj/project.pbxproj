@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3247C2EF262B9C22004C88FB /* WeatherModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3247C2EE262B9C22004C88FB /* WeatherModelDelegate.swift */; };
 		32CA4F1B2616800B009A7E02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F1A2616800B009A7E02 /* AppDelegate.swift */; };
 		32CA4F1D2616800B009A7E02 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F1C2616800B009A7E02 /* SceneDelegate.swift */; };
 		32CA4F1F2616800B009A7E02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA4F1E2616800B009A7E02 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3247C2EE262B9C22004C88FB /* WeatherModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelDelegate.swift; sourceTree = "<group>"; };
 		32CA4F172616800B009A7E02 /* yumemi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yumemi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32CA4F1A2616800B009A7E02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32CA4F1C2616800B009A7E02 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				32CA4F5C26254992009A7E02 /* PresentViewController.swift */,
 				32CA4F7A262555B0009A7E02 /* Present.storyboard */,
 				32CA4F9026281A1A009A7E02 /* WeatherModel.swift */,
+				3247C2EE262B9C22004C88FB /* WeatherModelDelegate.swift */,
 			);
 			path = yumemi;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				32CA4F5D26254993009A7E02 /* PresentViewController.swift in Sources */,
 				32CA4F1D2616800B009A7E02 /* SceneDelegate.swift in Sources */,
 				32CA4F9126281A1A009A7E02 /* WeatherModel.swift in Sources */,
+				3247C2EF262B9C22004C88FB /* WeatherModelDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,10 @@ protocol WeatherModel {
     func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void)
 }
 
+protocol WeatherDelegate {
+    func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void)
+}
+
 enum WeatherError: Error {
     case jsonEncodeError
     case jsonDecodeError
@@ -37,6 +41,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     
+    var weatherDelegate: WeatherDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +53,10 @@ class ViewController: UIViewController {
         activityIndicatorView.color = .purple
         activityIndicatorView.hidesWhenStopped = true
         view.addSubview(activityIndicatorView)
+    }
+    
+    deinit {
+        print("deinit")
     }
     
     @IBAction func tapClose(_ sender: UIButton) {
@@ -61,7 +71,14 @@ class ViewController: UIViewController {
     @objc func setWeatherImage() {
         // FIXME: タップしてインジケーターが表示されるまでラグがある
         self.activityIndicatorView.startAnimating()
-        weatherModel.fetchWeather(area: "tokyo", date: "2020-04-01T12:00:00+09:00") { result in
+        // DelegateのAPI取得と重複しているため、コメントアウト
+//        weatherModel.fetchWeather(area: "tokyo", date: "2020-04-01T12:00:00+09:00") { result in
+//            DispatchQueue.main.async {
+//                self.activityIndicatorView.stopAnimating()
+//                self.handleWeather(result: result)
+//            }
+//        }
+        weatherDelegate?.fetchWeather(area: "tokyo", date: "2020-04-01T12:00:00+09:00") { result in
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
                 self.handleWeather(result: result)
