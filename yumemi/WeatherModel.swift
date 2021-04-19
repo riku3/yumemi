@@ -9,23 +9,40 @@ import Foundation
 import YumemiWeather
 
 class WeatherModelImpl: WeatherModel {
-        
-    func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void) {
-        // Request
-        let request = Request(area: area, date: date)
-        var requestJson = ""
-        var responseJson = ""
+    
+    func encodeJson(request: Request) throws -> String {
         let encoder = JSONEncoder()
-        do {
-            let data = try encoder.encode(request)
-            requestJson = String(data: data, encoding: .utf8)!
-        } catch {
+        let requestData = try encoder.encode(request)
+        
+        guard let requestJsonString = String(data: requestData, encoding: .utf8) else {
+            throw WeatherError.jsonEncodeError
+        }
+        return requestJsonString
+    }
+    
+    func decodeJson(jsonString: String) throws -> Response {
+        guard let responseData = jsonString.data(using: .utf8) else {
+            throw WeatherError.jsonDecodeError
+        }
+        
+        let decoder: JSONDecoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        guard let response = try? decoder.decode(Response.self, from: responseData) else {
+            throw WeatherError.jsonDecodeError
+        }
+        
+        return response
+    }
+    
+    func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void) {
+        
+        guard let requestJson = try? encodeJson(request: Request(area: area, date: date)) else {
             completion(.failure(WeatherError.jsonEncodeError))
-            print(error.localizedDescription)
             return
         }
         
-        // APIよりデータ取得
+        var responseJson = ""
         do {
             responseJson = try YumemiWeather.syncFetchWeather(requestJson)
         } catch YumemiWeatherError.invalidParameterError {
@@ -37,26 +54,20 @@ class WeatherModelImpl: WeatherModel {
         } catch YumemiWeatherError.unknownError {
             completion(.failure(WeatherError.unknownError))
             return
-        } catch {
-            print("想定外のエラー")
+        } catch let error {
+            print("想定外のエラー:\(error)")
             return
         }
         
         guard responseJson != "" else {
+            completion(.failure(WeatherError.unknownError))
             return
         }
         
-        // Response
-        let decoder: JSONDecoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        do {
-            if let response = try decoder.decode(Response.self, from: responseJson.data(using: .utf8)!) as Response? {
-                completion(.success(response))
-            }
-        } catch {
+        if let response = try? decodeJson(jsonString: responseJson) {
+            completion(.success(response))
+        } else {
             completion(.failure(WeatherError.jsonDecodeError))
-            print(error.localizedDescription)
-            return
         }
     }
 }
