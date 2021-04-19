@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(setWeatherImage), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setWeatherImage), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         activityIndicatorView.center = view.center
         activityIndicatorView.style = UIActivityIndicatorView.Style.large
