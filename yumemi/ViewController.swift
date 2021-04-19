@@ -15,22 +15,28 @@ protocol WeatherDelegate {
     func fetchWeather(area: String, date: String, completion: @escaping (Result<Response, WeatherError>) -> Void)
 }
 
+enum Weather: String, Codable {
+    case sunny
+    case cloudy
+    case rainy
+}
+
 enum WeatherError: Error {
     case jsonEncodeError
     case jsonDecodeError
     case unknownError
 }
 
-struct Request:Codable {
-    let area:String
-    let date:String
+struct Request: Codable {
+    let area: String
+    let date: String
 }
 
-struct Response:Codable {
-    let weather:String
-    let maxTemp:Int
-    let minTemp:Int
-    let date:String
+struct Response: Codable {
+    let weather: Weather
+    let maxTemp: Int
+    let minTemp: Int
+    let date: String
 }
 
 class ViewController: UIViewController {
@@ -89,16 +95,7 @@ class ViewController: UIViewController {
     func handleWeather(result: Result<Response, WeatherError>) {
         switch result {
         case .success(let response):
-            switch response.weather {
-            case "sunny":
-                weatherImageView.image = UIImage(named: "sunny");
-            case "cloudy":
-                weatherImageView.image = UIImage(named: "cloudy");
-            case "rainy":
-                weatherImageView.image = UIImage(named: "rainy");
-            default:
-                break
-            }
+            weatherImageView.set(weather: response.weather)
             minTempLabel.text = response.minTemp.description
             maxTempLabel.text = response.maxTemp.description
         case .failure(let error):
@@ -119,6 +116,19 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "エラーが発生しました", message: errorName, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+}
+
+private extension UIImageView {
+    func set(weather: Weather) {
+        switch weather {
+        case .sunny:
+            self.image = UIImage(named: "sunny")
+        case .cloudy:
+            self.image = UIImage(named: "cloudy")
+        case .rainy:
+            self.image = UIImage(named: "rainy")
+        }
     }
 }
 
