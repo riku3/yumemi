@@ -62,6 +62,46 @@ class Closure {
         }
         _ = counter() // 1
         _ = counter() // 2
+        
+        var queue = [() -> Void]()
+        func enqueue(operation: @escaping () -> Void) {
+            queue.append(operation)
+        }
+        enqueue { print("abc") }
+        enqueue { print("def") }
+        queue.forEach { $0() }
+        
+        func or1(_ lhs: Bool, _ rhs: Bool) -> Bool {
+            if lhs {
+                print("true")
+                return true
+            } else {
+                print(rhs)
+                return rhs
+            }
+        }
+        _ = or1(true, false) // true
+        
+        func or(_ lhs: Bool, _ rhs: @autoclosure () -> Bool) -> Bool {
+            if lhs {
+                print("true")
+                return true
+            } else {
+                let rhs = rhs()
+                print(rhs)
+                return rhs
+            }
+        }
+        func lhs() -> Bool {
+            return true
+        }
+        
+        func rhs() -> Bool {
+            return false
+        }
+        
+        _ = or(lhs(), rhs())
+        
     }
     
     func double(_ x: Int) -> Int {
